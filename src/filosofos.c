@@ -61,7 +61,8 @@ int ejecutar(){
     for (int i = 0; i < NUMEROFILOSOFO; i++) {
         filosofos[i].id_filosofo = i+1;
         filosofos[i].tenedor_izq = filosofos[i].id_filosofo;
-        filosofos[i].tenedor_izq = ((filosofos[i].id_filosofo)+1) % NUMEROFILOSOFO;
+        filosofos[i].tenedor_der = ((filosofos[i].id_filosofo)+1) % NUMEROFILOSOFO;
+        
 
         if(pthread_create(&hilos_Filosofos[i],NULL,filosofo,(void *)&filosofos[i]) != 0){
             printf("Error al crear el hilo %i",i);
