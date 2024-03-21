@@ -10,4 +10,6 @@ struct Filosofo{
     char status;
 };
 
+void * filosofo(void *args);
+
 #endif /*filosofos.c*/
