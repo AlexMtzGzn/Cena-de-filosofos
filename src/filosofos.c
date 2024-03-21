@@ -3,10 +3,18 @@
 #include <unistd.h>
 #include "filosofos.h"
 
+#define NUMEROFILOSOFO 5
+#define NUMEROITERACIONES 30
+
+pthread_t hilos_Filosofos[NUMEROFILOSOFO];
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t condicion_tenedor[NUMEROFILOSOFO];
+int tenedores[NUMEROFILOSOFO];
+
 void *filosofo(void * arg){
     struct Filosofo * filosofo = (void *) arg;
 
-    for(int i = 0; i < NUMEROiTERACIONES; i++){
+    for(int i = 0; i < NUMEROITERACIONES; i++){
         printf("Filósofo %i pensando...\n", filosofo->id_filosofo);
         sleep(1);
 
