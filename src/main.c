@@ -3,7 +3,7 @@
 
 int main (void){
 
-
+    ejecutar();
 
     return 0;
 }

@@ -11,5 +11,6 @@ struct Filosofo{
 };
 
 void * filosofo(void *args);
+void ejecutar ();
 
 #endif /*filosofos.c*/
