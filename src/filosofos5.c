@@ -6,7 +6,7 @@ void *filosofo(void * arg){
     struct Filosofo * filosofo = (void *) arg;
 }
 
-void ejecutar(){
+int ejecutar(){
 
     struct Filosofo filosofos[numeroFilosofos];
 
@@ -19,6 +19,16 @@ void ejecutar(){
         filosofos[i].id_filosofo = i+1;
         filosofos[i].tenedor_izq = filosofos[i].id_filosofo;
         filosofos[i].tenedor_izq = ((filosofos[i].id_filosofo)+1) % numeroFilosofos;
-        pthread_create(&hilos_Filosofos[i],NULL,filosofo,(void *)&filosofos[i]);
+
+        if(pthread_create(&hilos_Filosofos[i],NULL,filosofo,(void *)&filosofos[i]) != 0){
+            printf("Error al crear el hilo %i",i);
+            return -1;
+        }
     }
+     
+    for (int i = 0; i < numeroFilosofos; i++) {
+        pthread_join(hilos_Filosofos[i], NULL);
+    }
+
+    return 0;
 }

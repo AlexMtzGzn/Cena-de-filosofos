@@ -3,7 +3,8 @@
 
 int main (void){
 
-    ejecutar();
+    if(ejecutar() == -1)
+
 
     return 0;
 }
