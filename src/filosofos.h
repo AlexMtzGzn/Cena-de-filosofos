@@ -2,13 +2,13 @@
 #define FILOSOFOS_H
 #include <pthread.h>
 
-#define numeroFilosofos 5
-#define numeroInteracciones 30
+#define NUMEROFILOSOFO 5
+#define NUMEROiTERACIONES 30
 
-pthread_t hilos_Filosofos [numeroFilosofos];
+pthread_t hilos_Filosofos [NUMEROFILOSOFO];
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t condicion_tenedor[numeroFilosofos];
-int tenedores[numeroFilosofos];
+pthread_cond_t condicion_tenedor[NUMEROFILOSOFO];
+int tenedores[NUMEROFILOSOFO];
 
 struct Filosofo{
     int id_filosofo;
