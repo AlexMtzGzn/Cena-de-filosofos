@@ -1,8 +1,11 @@
 #ifndef FILOSOFOS_H
 #define FILOSOFOS_H
+#include <pthread.h>
 
 #define numeroFilosofos 5
 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t condicion_tenedor[numeroFilosofos];
 int tenedores[numeroFilosofos];
 
 struct Filosofo{
