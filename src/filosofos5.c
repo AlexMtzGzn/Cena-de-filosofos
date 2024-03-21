@@ -19,6 +19,6 @@ void ejecutar(){
         filosofos[i].id_filosofo = i+1;
         filosofos[i].tenedor_izq = filosofos[i].id_filosofo;
         filosofos[i].tenedor_izq = ((filosofos[i].id_filosofo)+1) % numeroFilosofos;
-        
+        pthread_create(&hilos_Filosofos[i],NULL,filosofo,(void *)&filosofos[i]);
     }
 }
