@@ -5,6 +5,13 @@
 
 void *filosofo(void * arg){
     struct Filosofo * filosofo = (void *) arg;
+
+    for(int i = 0; i < numeroInteracciones; i++){
+        printf("Filósofo %i pensando...\n", filosofo->id_filosofo);
+        sleep(1);
+
+        
+    }
 }
 
 int ejecutar(){
