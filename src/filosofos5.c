@@ -14,4 +14,11 @@ void ejecutar(){
         pthread_cond_init(&condicion_tenedor[i], NULL);
         tenedores[i] = 1;
     }
+
+    for (int i = 0; i < numeroFilosofos; i++) {
+        filosofos[i].id_filosofo = i+1;
+        filosofos[i].tenedor_izq = filosofos[i].id_filosofo;
+        filosofos[i].tenedor_izq = ((filosofos[i].id_filosofo)+1) % numeroFilosofos;
+        
+    }
 }

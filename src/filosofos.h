@@ -4,6 +4,7 @@
 
 #define numeroFilosofos 5
 
+pthread_t hilos_Filosofos [numeroFilosofos];
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t condicion_tenedor[numeroFilosofos];
 int tenedores[numeroFilosofos];
