@@ -10,7 +10,13 @@ void *filosofo(void * arg){
         printf("Filósofo %i pensando...\n", filosofo->id_filosofo);
         sleep(1);
 
-        
+    pthread_mutex_lock(&mutex);
+
+        while (!tenedores[filosofo->tenedor_izq] || !tenedores[filosofo->tenedor_der]) {
+            printf("Filósofo %d esperando tenedores...\n", filosofo->id_filosofo);
+            pthread_cond_wait(&condicion_tenedor[filosofo->id_filosofo], &mutex);
+        }
+
     }
 }
 
