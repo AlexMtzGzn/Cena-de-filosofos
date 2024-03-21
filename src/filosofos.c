@@ -15,7 +15,7 @@ void *filosofo(void * arg){
     struct Filosofo * filosofo = (void *) arg;
 
     for(int i = 0; i < NUMEROITERACIONES; i++){
-        printf("Filósofo %i pensando...\n", filosofo->id_filosofo);
+        printf("Filósofo %i pensando...\n", (filosofo->id_filosofo+1));
         sleep(1);
 
         pthread_mutex_lock(&mutex);
