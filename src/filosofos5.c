@@ -17,6 +17,13 @@ void *filosofo(void * arg){
             pthread_cond_wait(&condicion_tenedor[filosofo->id_filosofo], &mutex);
         }
 
+        tenedores[filosofo->tenedor_izq] = 0;
+        tenedores[filosofo->tenedor_der] = 0;
+
+        printf("Filósofo %d tomó los tenedores (%d y %d)\n", filosofo->id_filosofo, filosofo->tenedor_izq, filosofo->tenedor_der);
+
+        pthread_mutex_unlock(&mutex);
+
     }
 }
 
