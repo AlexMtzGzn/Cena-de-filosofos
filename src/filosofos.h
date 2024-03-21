@@ -3,6 +3,7 @@
 #include <pthread.h>
 
 #define numeroFilosofos 5
+#define numeroInteracciones 30
 
 pthread_t hilos_Filosofos [numeroFilosofos];
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
