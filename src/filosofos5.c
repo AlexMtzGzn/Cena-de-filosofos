@@ -24,6 +24,9 @@ void *filosofo(void * arg){
 
         pthread_mutex_unlock(&mutex);
 
+        printf("Filósofo %d comiendo...\n", id);
+        sleep(2);
+
     }
 }
 
