@@ -3,6 +3,8 @@
 
 #define numeroFilosofos 5
 
+int tenedores[numeroFilosofos];
+
 struct Filosofo{
     int id_filosofo;
     int tenedor_izq;
