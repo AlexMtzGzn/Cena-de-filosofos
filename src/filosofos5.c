@@ -24,8 +24,19 @@ void *filosofo(void * arg){
 
         pthread_mutex_unlock(&mutex);
 
-        printf("Filósofo %d comiendo...\n", id);
+        printf("Filósofo %d comiendo...\n", filosofo->id_filosofo);
         sleep(2);
+
+        pthread_mutex_lock(&mutex);
+
+        tenedores[filosofo->tenedor_izq] = 1;
+        tenedores[filosofo->tenedor_der] = 1;
+        printf("Filósofo %d soltó los tenedores (%d y %d)\n", filosofo->id_filosofo, filosofo->tenedor_izq, filosofo->tenedor_der);
+
+        pthread_cond_signal(&condicion_tenedor[(filosofo->id_filosofo + 1) % NUMEROFILOSOFO]);
+        pthread_cond_signal(&condicion_tenedor[(filosofo->id_filosofo + NUMEROFILOSOFO - 1) % NUMEROFILOSOFO]);
+
+        pthread_mutex_unlock(&mutex);
 
     }
 }
