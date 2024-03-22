@@ -8,8 +8,8 @@
 
 pthread_t hilos_Filosofos[NUMEROFILOSOFO];
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t condicion_tenedor[NUMEROFILOSOFO];
-int tenedores[NUMEROFILOSOFO];
+pthread_cond_t condicion_palillos[NUMEROFILOSOFO];
+int palillos[NUMEROFILOSOFO];
 
 void *filosofo(void * arg){
     struct Filosofo * filosofo = (void *) arg;
@@ -19,16 +19,16 @@ void *filosofo(void * arg){
         sleep(2);
 
         pthread_mutex_lock(&mutex);
-
-        while (!tenedores[filosofo->tenedor_izq] || !tenedores[filosofo->tenedor_der]) {
-            printf("Filósofo %i esperando tenedores...\n", (filosofo->id_filosofo+1));
-            pthread_cond_wait(&condicion_tenedor[filosofo->id_filosofo], &mutex);
+        
+        while (!palillos[filosofo->palillo_izq] || !palillos[filosofo->palillo_der]) {
+            printf("Filósofo %i esperando palillos...\n", (filosofo->id_filosofo+1));
+            pthread_cond_wait(&condicion_palillos[filosofo->id_filosofo], &mutex);
         }
 
-        tenedores[filosofo->tenedor_izq] = 0;
-        tenedores[filosofo->tenedor_der] = 0;
+        palillos[filosofo->palillo_izq] = 0;
+        palillos[filosofo->palillo_der] = 0;
 
-        printf("Filósofo %i tomó los tenedores (%i y %i)\n", (filosofo->id_filosofo+1), (filosofo->tenedor_izq+1), (filosofo->tenedor_der+1));
+        printf("Filósofo %i tomó los palillos (%i y %i)\n", (filosofo->id_filosofo+1), (filosofo->palillo_izq+1), (filosofo->pallilo_der+1));
 
         pthread_mutex_unlock(&mutex);
 
@@ -37,12 +37,12 @@ void *filosofo(void * arg){
 
         pthread_mutex_lock(&mutex);
 
-        tenedores[filosofo->tenedor_izq] = 1;
-        tenedores[filosofo->tenedor_der] = 1;
-        printf("Filósofo %i soltó los tenedores (%i y %i)\n", (filosofo->id_filosofo+1), (filosofo->tenedor_izq+1), (filosofo->tenedor_der+1));
+        palillos[filosofo->palillo_izq] = 1;
+        palillos[filosofo->palillo_der] = 1;
+        printf("Filósofo %i soltó los palillos (%i y %i)\n", (filosofo->id_filosofo+1), (filosofo->palillo_izq+1), (filosofo->pallilo_der+1));
 
-        pthread_cond_signal(&condicion_tenedor[(filosofo->id_filosofo + 1) % NUMEROFILOSOFO]);
-        pthread_cond_signal(&condicion_tenedor[(filosofo->id_filosofo + NUMEROFILOSOFO - 1) % NUMEROFILOSOFO]);
+        pthread_cond_signal(&condicion_palillos[(filosofo->id_filosofo + 1) % NUMEROFILOSOFO]);
+        pthread_cond_signal(&condicion_palillos[(filosofo->id_filosofo + NUMEROFILOSOFO - 1) % NUMEROFILOSOFO]);
 
         pthread_mutex_unlock(&mutex);
 
@@ -54,14 +54,14 @@ int ejecutar(){
     struct Filosofo filosofos[NUMEROFILOSOFO];
 
     for(int i  = 0; i < NUMEROFILOSOFO; i++){
-        pthread_cond_init(&condicion_tenedor[i], NULL);
-        tenedores[i] = 1;
+        pthread_cond_init(&condicion_palillos[i], NULL);
+        palillos[i] = 1;
     }
 
     for (int i = 0; i < NUMEROFILOSOFO; i++) {
         filosofos[i].id_filosofo = i;
-        filosofos[i].tenedor_izq = filosofos[i].id_filosofo;
-        filosofos[i].tenedor_der = ((filosofos[i].id_filosofo)+1) % NUMEROFILOSOFO;
+        filosofos[i].palillo_izq = filosofos[i].id_filosofo;
+        filosofos[i].palillo_der = ((filosofos[i].id_filosofo)+1) % NUMEROFILOSOFO;
         
 
         if(pthread_create(&hilos_Filosofos[i],NULL,filosofo,(void *)&filosofos[i]) != 0){

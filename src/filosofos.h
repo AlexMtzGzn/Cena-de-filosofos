@@ -3,8 +3,8 @@
 
 struct Filosofo{
     int id_filosofo;
-    int tenedor_izq;
-    int tenedor_der;
+    int palillo_izq;
+    int palillo_der;
     char status;
 };
 
