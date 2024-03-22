@@ -16,7 +16,7 @@ void *filosofo(void * arg){
 
     for(int i = 0; i < NUMEROITERACIONES; i++){
         printf("Filósofo %i pensando...\n", (filosofo->id_filosofo+1));
-        sleep(1);
+        sleep(2);
 
         pthread_mutex_lock(&mutex);
 
@@ -33,7 +33,7 @@ void *filosofo(void * arg){
         pthread_mutex_unlock(&mutex);
 
         printf("Filósofo %d comiendo...\n", (filosofo->id_filosofo+1));
-        sleep(2);
+        sleep(3);
 
         pthread_mutex_lock(&mutex);
 
