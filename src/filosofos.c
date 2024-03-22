@@ -28,7 +28,7 @@ void *filosofo(void * arg){
         palillos[filosofo->palillo_izq] = 0;
         palillos[filosofo->palillo_der] = 0;
 
-        printf("Filósofo %i tomó los palillos (%i y %i)\n", (filosofo->id_filosofo+1), (filosofo->palillo_izq+1), (filosofo->pallilo_der+1));
+        printf("Filósofo %i tomó los palillos (%i y %i)\n", (filosofo->id_filosofo+1), (filosofo->palillo_izq+1), (filosofo->palillo_der+1));
 
         pthread_mutex_unlock(&mutex);
 
@@ -39,7 +39,7 @@ void *filosofo(void * arg){
 
         palillos[filosofo->palillo_izq] = 1;
         palillos[filosofo->palillo_der] = 1;
-        printf("Filósofo %i soltó los palillos (%i y %i)\n", (filosofo->id_filosofo+1), (filosofo->palillo_izq+1), (filosofo->pallilo_der+1));
+        printf("Filósofo %i soltó los palillos (%i y %i)\n", (filosofo->id_filosofo+1), (filosofo->palillo_izq+1), (filosofo->palillo_der+1));
 
         pthread_cond_signal(&condicion_palillos[(filosofo->id_filosofo + 1) % NUMEROFILOSOFO]);
         pthread_cond_signal(&condicion_palillos[(filosofo->id_filosofo + NUMEROFILOSOFO - 1) % NUMEROFILOSOFO]);
