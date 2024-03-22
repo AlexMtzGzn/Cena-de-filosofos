@@ -4,7 +4,7 @@
 int main (void){
 
     if(ejecutar() == -1){
-        printf("./Error al ejecutarse el codigo");
+        printf("\nError al ejecutar el código");
         return -1;
     }
         
