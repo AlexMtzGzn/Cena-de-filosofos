@@ -4,7 +4,7 @@ Este proyecto implementa una solución al problema de los filósofos comensales 
 
 ## Descripción
 
-El problema de los filósofos comensales es un clásico problema de sincronización de procesos y acceso a recursos compartidos en informática. Consiste en un grupo de filósofos que pasan su vida pensando y comiendo en una mesa redonda. Entre cada par de filósofos, hay un tenedor. El problema surge cuando todos los filósofos intentan comer al mismo tiempo, ya que pueden entrar en una situación de espera mutua (deadlock) si cada uno toma un tenedor y espera el otro.
+El problema de los filósofos comensales es un clásico problema de sincronización de procesos y acceso a recursos compartidos en informática. Consiste en un grupo de filósofos que pasan su vida pensando y comiendo en una mesa redonda. Entre cada par de filósofos, hay un palillo. El problema surge cuando todos los filósofos intentan comer al mismo tiempo, ya que pueden entrar en una situación de espera mutua (deadlock) si cada uno toma un palillo y espera el otro.
 
 Este programa implementa una solución al problema utilizando hilos pthread en C. Cada filósofo es representado por un hilo, y se sincroniza el acceso a los tenedores compartidos utilizando mutex y condiciones pthread.
 
