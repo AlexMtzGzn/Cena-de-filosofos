@@ -18,19 +18,19 @@ Este programa implementa una solución al problema utilizando hilos pthread en C
 1. Clona el repositorio:
 
     ```bash
-    git clone 
+    git clone https://github.com/AlexMtzGzn/Cena_De_Filosofos.git
     ```
 
 2. Navega al directorio del proyecto:
 
     ```bash
-    cd 
+    cd Cena_De_Filosofos/src
     ```
 
 3. Compila el programa:
 
     ```bash
-    gcc -o 
+    gcc -o cena_filosofos main.c filosofos.c
     ```
 
 ## Uso
@@ -38,7 +38,7 @@ Este programa implementa una solución al problema utilizando hilos pthread en C
 1. Ejecuta el programa:
 
     ```bash
-    ./
+    ./cena_filosofos
     ```
 
 2. Observa la simulación del problema de los filósofos comensales en la salida.
