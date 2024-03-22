@@ -4,7 +4,7 @@
 #include "filosofos.h"
 
 #define NUMEROFILOSOFO 5
-#define NUMEROITERACIONES 30
+#define NUMEROITERACIONES 5
 
 pthread_t hilos_Filosofos[NUMEROFILOSOFO];
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
