@@ -21,25 +21,25 @@ void *filosofo(void * arg){
         pthread_mutex_lock(&mutex);
 
         while (!tenedores[filosofo->tenedor_izq] || !tenedores[filosofo->tenedor_der]) {
-            printf("Filósofo %d esperando tenedores...\n", (filosofo->id_filosofo+1));
+            printf("Filósofo %i esperando tenedores...\n", (filosofo->id_filosofo+1));
             pthread_cond_wait(&condicion_tenedor[filosofo->id_filosofo], &mutex);
         }
 
         tenedores[filosofo->tenedor_izq] = 0;
         tenedores[filosofo->tenedor_der] = 0;
 
-        printf("Filósofo %d tomó los tenedores (%d y %d)\n", (filosofo->id_filosofo+1), (filosofo->tenedor_izq+1), (filosofo->tenedor_der+1));
+        printf("Filósofo %i tomó los tenedores (%i y %i)\n", (filosofo->id_filosofo+1), (filosofo->tenedor_izq+1), (filosofo->tenedor_der+1));
 
         pthread_mutex_unlock(&mutex);
 
-        printf("Filósofo %d comiendo...\n", (filosofo->id_filosofo+1));
+        printf("Filósofo %i comiendo...\n", (filosofo->id_filosofo+1));
         sleep(3);
 
         pthread_mutex_lock(&mutex);
 
         tenedores[filosofo->tenedor_izq] = 1;
         tenedores[filosofo->tenedor_der] = 1;
-        printf("Filósofo %d soltó los tenedores (%d y %d)\n", (filosofo->id_filosofo+1), (filosofo->tenedor_izq+1), (filosofo->tenedor_der+1));
+        printf("Filósofo %i soltó los tenedores (%i y %i)\n", (filosofo->id_filosofo+1), (filosofo->tenedor_izq+1), (filosofo->tenedor_der+1));
 
         pthread_cond_signal(&condicion_tenedor[(filosofo->id_filosofo + 1) % NUMEROFILOSOFO]);
         pthread_cond_signal(&condicion_tenedor[(filosofo->id_filosofo + NUMEROFILOSOFO - 1) % NUMEROFILOSOFO]);
