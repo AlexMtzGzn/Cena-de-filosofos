@@ -1,6 +1,5 @@
 #ifndef FILOSOFOS_H
 #define FILOSOFOS_H
-#include <pthread.h>
 
 struct Filosofo{
     int id_filosofo;
