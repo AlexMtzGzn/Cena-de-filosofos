@@ -10,4 +10,4 @@ struct Filosofo{
 void * filosofo(void *args);
 int ejecutar();
 
-#endif /*filosofos.c*/
+#endif /*FILOSOFOS_H*/
