@@ -49,6 +49,7 @@ void *filosofo(void *arg)
 
         pthread_mutex_unlock(&mutex);
     }
+    return NULL;
 }
 
 int ejecutar()
